@@ -1,1 +1,193 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  text-shadow: -1px -0.5px 2px black;
+  background-color: #250055;
+}
+
+.delete-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1200px;
+  height: 800px;
+}
+
+.delete-first {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  color: #fff;
+  font-size: 30px;
+  width: 200px;
+  height: 80px;
+  background-color: red;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  -webkit-transform: rotate(-30);
+          transform: rotate(-30);
+  z-index: 1;
+}
+
+.delete-first__active {
+  opacity: 0;
+  -webkit-transform: scale(3.3);
+          transform: scale(3.3);
+  z-index: 0;
+}
+
+.delete-second {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 670px;
+  height: 280px;
+  padding: 30px;
+  background-color: #fff;
+  border: 7px solid red;
+  border-radius: 30px;
+  text-shadow: none;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  -webkit-transform: scale(0.3);
+          transform: scale(0.3);
+}
+
+.delete-second h1 {
+  color: red;
+  font-weight: 300;
+}
+
+.delete-second p {
+  position: relative;
+  color: #250055;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.5em;
+  text-align: center;
+  padding: 20px;
+  top: 50px;
+  opacity: 0;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.delete-second .second_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  text-shadow: -1px -0.5px 2px black;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.delete-second .second_buttons .second_buttons-no {
+  position: relative;
+  color: red;
+  font-size: 16px;
+  font-weight: 600;
+  top: 50px;
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
+  border: 3px solid red;
+  border-radius: 15px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.delete-second .second_buttons .second_buttons-yes {
+  position: relative;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  top: 70px;
+  width: 200px;
+  height: 50px;
+  background-color: red;
+  border: 3px solid red;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 30px 5px -24.5px black;
+          box-shadow: 0px 30px 5px -24.5px black;
+  -webkit-transition: 0.7s ease;
+  transition: 0.7s ease;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.delete-second .second_buttons .second_buttons__active {
+  top: 0;
+  opacity: 1;
+}
+
+.delete-second__active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-animation: flipRotate 500ms;
+          animation: flipRotate 500ms;
+}
+
+.delete-second__active p {
+  top: 0 !important;
+  opacity: 1 !important;
+}
+
+@-webkit-keyframes flipRotate {
+  25% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  75% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+}
+
+@keyframes flipRotate {
+  25% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  75% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+}
+/*# sourceMappingURL=style.css.map */
