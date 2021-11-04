@@ -7,18 +7,28 @@
 body {
     font-family: sans-serif;
     text-shadow:  -1px -0.5px 2px black;
-    background-color: rgb(37, 0, 85);
+    background-color: rgb(37, 0, 85);    
+}
+a, a:visited {
+    color: inherit;
+    text-decoration: inherit;
+}
+.wrapper {
+    display: flex;
+    width: 50%;
+    // margin: 0 auto;
 }
 .delete-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 1200px;
-    height: 800px;
+    width: 700px;
+    height: 700px;
+    margin: 0 30px;
+    perspective-origin: center center;
+    perspective: 500px;
+    // display: none;
 }
-
-
-
 .delete-first {
     display: flex;
     justify-content: center;
@@ -31,13 +41,13 @@ body {
     background-color: red;
     border-radius: 10px;
     cursor: pointer;
-    transition: 0.5s ease;
-    transform: rotate(-30);
-    z-index: 1;
+    transition: 0.3s ease;
+    z-index: 1;    
 }
 
 .delete-first__active {
     opacity: 0;
+    transition: 0s;
     transform: scale(3.3);
     z-index: 0;
 }
@@ -54,11 +64,13 @@ body {
     border: 7px solid red;
     border-radius: 30px;
     text-shadow: none;
-    transition: 0.5s ease;
-    transform: scale(0.3);    
+    transform: scale(0.3);
+    transition: 0.3s ease;
     & h1 {
         color: red;
         font-weight: 300;
+        transition: 0.2s ease;
+        opacity: 0;
     }
     & p {
         position: relative;
@@ -70,7 +82,7 @@ body {
         padding: 20px;
         top: 50px;
         opacity: 0;
-        transition: 0.3s ease;
+        transition: 0.7s ease;
     }
     & .second_buttons {
         display: flex;
@@ -90,6 +102,7 @@ body {
             border: 3px solid red;
             border-radius: 15px;
             transition: 0.5s ease;
+            filter: blur(10px);
             cursor: pointer;
             opacity: 0;
         }
@@ -98,7 +111,7 @@ body {
             color: #fff;
             font-size: 16px;
             font-weight: 400;
-            top: 70px;
+            top: 30px;
             width: 200px;
             height: 50px;
             background-color: red;
@@ -106,11 +119,13 @@ body {
             border-radius: 15px;
             box-shadow: 0px 30px 5px -24.5px black;
             transition: 0.7s ease;
+            filter: blur(10px);
             cursor: pointer;
             opacity: 0;
         }
         & .second_buttons__active {
             top: 0;
+            filter: blur(0);
             opacity: 1;
         }
     }
@@ -118,19 +133,364 @@ body {
 }
 .delete-second__active {
     transform: scale(1);
-    animation: flipRotate 500ms;
+    
+    animation: comingOut 400ms;    
+    & h1 {
+        opacity: 1;
+    }
     & p {
-        top: 0 !important;
-        opacity: 1 !important;
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes comingOut {
+    0% {
+        transform: scale(0.3);
+    }
+    95% {
+        transform: scale(1.005);
+    }    
+}
+
+
+//////////////// Rotate buttons////////////////
+
+.rotate_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 700px;
+    margin-right: 30px;
+    // display: none;
+    & a {
+        font-family: sans-serif;
+        font-weight: bold;
+        text-shadow: none;
+        color: #fff;
+
+    }
+    & .first_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+       & a {
+            position: relative;
+            width: 160px;
+            height: 60px;
+            transform-style: preserve-3d;
+            transform: perspective(500px);
+            transition: 0.7s;
+            & span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                background-color: lightskyblue;
+            }
+            & span:nth-child(1) {
+                transform: translateZ(20px);
+               
+            }
+            & span:nth-child(4) {
+                transform: translateZ(-20px) rotateY(180deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(2), 
+              span:nth-child(3) {
+                width: 40px;
+                height: 100%;
+                background-color: rgb(18, 126, 120);
+            }
+            & span:nth-child(2) {
+                transform: rotateY(90deg) translateZ(140px);
+            }
+            & span:nth-child(3) {
+                transform: rotateY(90deg) translateZ(-20px)
+            }
+        }
+    }
+    
+    & .second_btn {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: sans-serif;
+       & a {
+            position: relative;
+            width: 160px;
+            height: 60px;
+            transform-style: preserve-3d;
+            transform: perspective(500px);
+            transition: 0.7s;
+            & span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                background-color: lightskyblue;
+            }
+            & span:nth-child(1) {
+                transform: translateZ(20px);
+               
+            }
+            & span:nth-child(4) {
+                transform: translateZ(-20px) rotateY(180deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(5) {
+                height: 40px;
+                transform: translateY(40px) rotateX(90deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(6) {
+                height: 40px;
+                transform: translateY(-20px) rotateX(90deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(2), 
+              span:nth-child(3) {
+                width: 40px;
+                height: 100%;
+                background-color: rgb(18, 126, 120);
+            }
+            & span:nth-child(2) {
+                transform: rotateY(90deg) translateZ(140px);
+            }
+            & span:nth-child(3) {
+                transform: rotateY(90deg) translateZ(-20px)
+            }
+        }
+    } 
+
+
+
+    & .third_btn {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: sans-serif;
+       & a {
+            position: relative;
+            width: 160px;
+            height: 60px;
+            transform-style: preserve-3d;
+            transform: perspective(500px);
+            transition: 0.7s;
+            & span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                background-color: lightskyblue;
+            }
+            & span:nth-child(1) {
+                transform: translateZ(20px);
+               
+            }
+            & span:nth-child(4) {
+                transform: translateZ(-20px) rotateX(180deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(5) {
+                height: 40px;
+                transform: translateY(40px) rotateX(90deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(6) {
+                height: 40px;
+                transform: translateY(-20px) rotateX(90deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(2), 
+              span:nth-child(3) {
+                width: 40px;
+                height: 100%;
+                background-color: rgb(18, 126, 120);
+            }
+            & span:nth-child(2) {
+                transform: rotateY(90deg) translateZ(140px);
+            }
+            & span:nth-child(3) {
+                transform: rotateY(90deg) translateZ(-20px)
+            }
+        }
+    } 
+    & .fourth_btn {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: sans-serif;
+       & a {
+            position: relative;
+            width: 160px;
+            height: 60px;
+            transform-style: preserve-3d;
+            transform: perspective(500px);
+            transition: 0.7s;
+            
+            & span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                background-color: lightskyblue;                
+            }
+            & span:nth-child(1) {
+                transform: translateZ(20px);
+               
+            }
+            & span:nth-child(4) {
+                transform: translateZ(-20px) rotateY(180deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(5) {
+                height: 40px;
+                transform: translateY(40px) rotateX(90deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(6) {
+                height: 40px;
+                transform: translateY(-20px) rotateX(90deg);
+                background-color: lightseagreen;
+            }
+            & span:nth-child(2), 
+              span:nth-child(3) {
+                width: 40px;
+                height: 100%;
+                background-color: rgb(18, 126, 120);
+            }
+            & span:nth-child(2) {
+                transform: rotateY(90deg) translateZ(140px);
+            }
+            & span:nth-child(3) {
+                transform: rotateY(90deg) translateZ(-20px)
+            }
+        }
+        & a:hover {
+            animation-name: fourthBtn;
+            animation-duration: 500ms;
+        }
+    } 
+    
+}
+
+.first_btn__active {
+    transform: perspective(500px) rotateY(-180deg) !important;
+}
+.second_btn__active {
+    transform: perspective(500px) rotateY(-180deg)  rotateZ(-360deg) !important;
+}
+.third_btn__active {
+    transform: perspective(500px) rotateX(-540deg)   !important;
+}
+.fourth_btn__active {
+    transform: perspective(500px)  rotateX(360deg) rotateY(-360deg) rotateX(-180deg) rotateZ(-540deg) !important;
+    // animation-name: fourthBtn !important;
+    // animation-duration: 500ms;
+    
+}
+
+@keyframes fourthBtn {
+    from {
+        transform: perspective(500px) rotateZ(120deg) rotateX(-60deg) rotateY(360deg) rotateX(210deg) !important;
+    }
+    to {
+        transform: perspective(500px) rotateZ(90deg) rotateX(-45deg) rotateY(360deg) rotateX(180deg) !important;
     }
 }
 
 
-@keyframes flipRotate {
-    25%{
-        transform: rotate(-30deg);
-    }
-    75%{
-        transform: rotate(30deg);
-    }
+///////////////// Card slider //////////////////
+
+
+.slides {
+    position: relative;
+    width: 100%;
+    padding-top: 50px;
+    text-shadow: none;
+    &_item {
+        position: absolute;
+        width: 330px;
+        height: 400px;
+        margin: 0 auto;
+        padding: 70px 40px;
+        background-color: rgb(245, 39, 73);
+        border: 2px solid black;
+        border-radius: 10px;
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &-main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 300px !important;
+            height: 250px;
+            & h1 {
+                width: 233px;
+            }
+            & li {
+                padding-bottom: 10px;
+            }
+        }
+        &-side {
+            position: absolute;
+            transform: rotateZ(90deg) ;
+            top: 210px;
+            right: -50px;
+            width: 170px;
+            height: 50px;
+        }
+    }    
+}
+
+.current {
+    background-color: lightgreen;
+    z-index: 3;
+}
+
+@keyframes slidesAnimatio {
+    
+}
+
+// .slides:nth-child(1) {
+
+// }
+.slides_item:nth-child(2) {
+    top: 80px;
+    left: 40px;
+    z-index: 2;
+}
+.slides_item:nth-child(3) {
+    top: 110px;
+    left: 80px;
+    z-index: 1;
 }

@@ -22,3 +22,24 @@ yesBtn.addEventListener('click', ()=> {
     noBtn.classList.remove('second_buttons__active')
     yesBtn.classList.remove('second_buttons__active')
 })
+
+///// Rotations buttons /////
+
+const firstRotationBtn = document.querySelector('.first_btn-a');
+const SecondRotationBtn = document.querySelector('.second_btn-a');
+const thirdRotationBtn = document.querySelector('.third_btn-a');
+const fourthRotationBtn = document.querySelector('.fourth_btn-a');
+
+
+firstRotationBtn.addEventListener('click', ()=> {
+    firstRotationBtn.classList.toggle('first_btn__active');
+});
+SecondRotationBtn.addEventListener('click', ()=> {
+    SecondRotationBtn.classList.toggle('second_btn__active');
+});
+thirdRotationBtn.addEventListener('click', ()=> {
+    thirdRotationBtn.classList.toggle('third_btn__active');
+});
+fourthRotationBtn.addEventListener('click', ()=> {
+    fourthRotationBtn.classList.toggle('fourth_btn__active');
+});
