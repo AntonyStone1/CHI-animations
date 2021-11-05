@@ -15,19 +15,18 @@ a, a:visited {
 }
 .wrapper {
     display: flex;
-    width: 50%;
-    // margin: 0 auto;
+    flex-direction: column;
+    margin: 0 auto;
 }
 .delete-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 700px;
-    height: 700px;
-    margin: 0 30px;
+    height: 400px;
+    margin: 0 auto;
     perspective-origin: center center;
     perspective: 500px;
-    // display: none;
 }
 .delete-first {
     display: flex;
@@ -155,27 +154,23 @@ a, a:visited {
 
 
 //////////////// Rotate buttons////////////////
-
 .rotate_buttons {
+    width: 700px;
+    margin: 0 auto;
+}
+.rotate_buttons-list {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     height: 700px;
-    margin-right: 30px;
-    // display: none;
-    & a {
-        font-family: sans-serif;
-        font-weight: bold;
-        text-shadow: none;
-        color: #fff;
-
-    }
-    & .first_btn {
+    & .rotate_buttons-item {
         display: flex;
         justify-content: center;
         align-items: center;
         font-family: sans-serif;
-       & a {
+        cursor: pointer;
+       & .rotate_buttons-item-container {
             position: relative;
             width: 160px;
             height: 60px;
@@ -218,186 +213,103 @@ a, a:visited {
         }
     }
     
-    & .second_btn {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        font-family: sans-serif;
-       & a {
-            position: relative;
-            width: 160px;
-            height: 60px;
-            transform-style: preserve-3d;
-            transform: perspective(500px);
-            transition: 0.7s;
-            & span {
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: block;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 24px;
-                background-color: lightskyblue;
-            }
-            & span:nth-child(1) {
-                transform: translateZ(20px);
-               
-            }
-            & span:nth-child(4) {
-                transform: translateZ(-20px) rotateY(180deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(5) {
-                height: 40px;
-                transform: translateY(40px) rotateX(90deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(6) {
-                height: 40px;
-                transform: translateY(-20px) rotateX(90deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(2), 
-              span:nth-child(3) {
-                width: 40px;
-                height: 100%;
-                background-color: rgb(18, 126, 120);
-            }
-            & span:nth-child(2) {
-                transform: rotateY(90deg) translateZ(140px);
-            }
-            & span:nth-child(3) {
-                transform: rotateY(90deg) translateZ(-20px)
-            }
+    & .second_btn {       
+        & span:nth-child(1) {
+            transform: translateZ(20px);
         }
-    } 
-
-
+        & span:nth-child(4) {
+            transform: translateZ(-20px) rotateY(180deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(5) {
+            height: 40px;
+            transform: translateY(40px) rotateX(90deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(6) {
+            height: 40px;
+            transform: translateY(-20px) rotateX(90deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(2), 
+          span:nth-child(3) {
+            width: 40px;
+            height: 100%;
+            background-color: rgb(18, 126, 120);
+        }
+        & span:nth-child(2) {
+            transform: rotateY(90deg) translateZ(140px);
+        }
+        & span:nth-child(3) {
+            transform: rotateY(90deg) translateZ(-20px)
+        }
+    }
 
     & .third_btn {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        font-family: sans-serif;
-       & a {
-            position: relative;
-            width: 160px;
-            height: 60px;
-            transform-style: preserve-3d;
-            transform: perspective(500px);
-            transition: 0.7s;
-            & span {
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: block;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 24px;
-                background-color: lightskyblue;
-            }
-            & span:nth-child(1) {
-                transform: translateZ(20px);
-               
-            }
-            & span:nth-child(4) {
-                transform: translateZ(-20px) rotateX(180deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(5) {
-                height: 40px;
-                transform: translateY(40px) rotateX(90deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(6) {
-                height: 40px;
-                transform: translateY(-20px) rotateX(90deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(2), 
-              span:nth-child(3) {
-                width: 40px;
-                height: 100%;
-                background-color: rgb(18, 126, 120);
-            }
-            & span:nth-child(2) {
-                transform: rotateY(90deg) translateZ(140px);
-            }
-            & span:nth-child(3) {
-                transform: rotateY(90deg) translateZ(-20px)
-            }
+        & span:nth-child(1) {
+            transform: translateZ(20px);
+           
         }
-    } 
+        & span:nth-child(4) {
+            // transform: translateZ(-20px) rotateX(180deg) rotateY(90deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(5) {
+            height: 40px;
+            transform: translateY(40px) rotateX(90deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(6) {
+            height: 40px;
+            transform: translateY(-20px) rotateX(90deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(2), 
+          span:nth-child(3) {
+            width: 40px;
+            height: 100%;
+            background-color: rgb(18, 126, 120);
+        }
+        & span:nth-child(2) {
+            transform: rotateY(90deg) translateZ(140px);
+        }
+        & span:nth-child(3) {
+            transform: rotateY(90deg) translateZ(-20px)
+        }
+    }
+
     & .fourth_btn {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        font-family: sans-serif;
-       & a {
-            position: relative;
-            width: 160px;
-            height: 60px;
-            transform-style: preserve-3d;
-            transform: perspective(500px);
-            transition: 0.7s;
-            
-            & span {
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: block;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 24px;
-                background-color: lightskyblue;                
-            }
-            & span:nth-child(1) {
-                transform: translateZ(20px);
-               
-            }
-            & span:nth-child(4) {
-                transform: translateZ(-20px) rotateY(180deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(5) {
-                height: 40px;
-                transform: translateY(40px) rotateX(90deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(6) {
-                height: 40px;
-                transform: translateY(-20px) rotateX(90deg);
-                background-color: lightseagreen;
-            }
-            & span:nth-child(2), 
-              span:nth-child(3) {
-                width: 40px;
-                height: 100%;
-                background-color: rgb(18, 126, 120);
-            }
-            & span:nth-child(2) {
-                transform: rotateY(90deg) translateZ(140px);
-            }
-            & span:nth-child(3) {
-                transform: rotateY(90deg) translateZ(-20px)
-            }
+        & span:nth-child(1) {
+            transform: translateZ(20px);
+           
         }
-        & a:hover {
-            animation-name: fourthBtn;
-            animation-duration: 500ms;
+        & span:nth-child(4) {
+            // transform: translateZ(-20px) rotateY(180deg);
+            background-color: lightseagreen;
         }
-    } 
-    
+        & span:nth-child(5) {
+            height: 40px;
+            transform: translateY(40px) rotateX(90deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(6) {
+            height: 40px;
+            transform: translateY(-20px) rotateX(90deg);
+            background-color: lightseagreen;
+        }
+        & span:nth-child(2), 
+          span:nth-child(3) {
+            width: 40px;
+            height: 100%;
+            background-color: rgb(18, 126, 120);
+        }
+        & span:nth-child(2) {
+            transform: rotateY(90deg) translateZ(140px);
+        }
+        & span:nth-child(3) {
+            transform: rotateY(90deg) translateZ(-20px)
+        }        
+    }    
 }
 
 .first_btn__active {
