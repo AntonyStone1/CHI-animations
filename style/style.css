@@ -11,6 +11,14 @@ body {
   background-color: #250055;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input:focus {
+  outline: none;
+}
+
 a, a:visited {
   color: inherit;
   text-decoration: inherit;
@@ -44,6 +52,7 @@ a, a:visited {
           perspective-origin: center center;
   -webkit-perspective: 500px;
           perspective: 500px;
+  display: none;
 }
 
 .delete-first {
@@ -229,6 +238,7 @@ a, a:visited {
   width: 700px;
   margin: 0 auto;
   margin-bottom: 400px;
+  display: none;
 }
 
 .rotate_buttons-list {
@@ -495,6 +505,7 @@ a, a:visited {
   margin: 0 auto;
   padding-top: 50px;
   text-shadow: none;
+  display: none;
 }
 
 .slides_item {
@@ -758,5 +769,58 @@ a, a:visited {
 .slides:hover {
   -webkit-animation: none;
           animation: none;
+}
+
+.svg_clock {
+  width: 500px;
+  margin: 0 auto;
+  display: none;
+}
+
+.svg_clock-item {
+  width: 500px;
+  height: 500px;
+}
+
+.svg_clock-item__minutes {
+  -webkit-animation: minutes_animation 6000ms linear infinite;
+          animation: minutes_animation 6000ms linear infinite;
+  -webkit-transform-origin: 42% 42%;
+          transform-origin: 42% 42%;
+}
+
+.svg_clock-item__hours {
+  -webkit-animation: hours_animation 72000ms linear infinite;
+          animation: hours_animation 72000ms linear infinite;
+  -webkit-transform-origin: 42% 42%;
+          transform-origin: 42% 42%;
+}
+
+@-webkit-keyframes minutes_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes minutes_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes hours_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes hours_animation {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=style.css.map */

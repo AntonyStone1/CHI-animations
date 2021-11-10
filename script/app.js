@@ -25,6 +25,7 @@ yesBtn.addEventListener('click', ()=> {
 
 ///// Rotations buttons /////
 
+
 const firstRotationBtn = document.querySelector('.first_btn-a');
 const SecondRotationBtn = document.querySelector('.second_btn-a');
 const thirdRotationBtn = document.querySelector('.third_btn-a');
@@ -43,3 +44,22 @@ thirdRotationBtn.addEventListener('click', ()=> {
 fourthRotationBtn.addEventListener('click', ()=> {
     fourthRotationBtn.classList.toggle('fourth_btn__active');
 });
+
+
+/////////////// Progress bar ////////////
+
+// const porgressPrecent = document.querySelector('#porgress_precent');
+// const progressBar = document.querySelector('.svg_circle-item__bar');
+
+
+
+// porgressPrecent.addEventListener('input', () => {
+
+// })
+
+// const numToSquare = num => {
+//     num = String(num);
+//     return num.split('').map(item => item *= item).join('');
+// }
+
+// console.log(numToSquare(9119));
