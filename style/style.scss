@@ -33,7 +33,7 @@ a, a:visited {
     margin: 0 auto;
     perspective-origin: center center;
     perspective: 500px;
-    display: none;
+    // display: none;
 }
 .delete-first {
     display: flex;
@@ -165,7 +165,7 @@ a, a:visited {
     width: 700px;
     margin: 0 auto;
     margin-bottom: 400px;
-    display: none;
+    // display: none;
 }
 .rotate_buttons-list {
     display: flex;
@@ -355,7 +355,7 @@ a, a:visited {
     margin: 0 auto;
     padding-top: 50px;
     text-shadow: none;
-    display: none;
+    // display: none;
     &_item {
         position: absolute;
         width: 330px;
@@ -511,7 +511,7 @@ a, a:visited {
 .svg_clock {
     width: 500px;
     margin: 0 auto;
-    display: none;
+    // display: none;
     &-item {
         width: 500px;
         height: 500px;

@@ -52,7 +52,6 @@ a, a:visited {
           perspective-origin: center center;
   -webkit-perspective: 500px;
           perspective: 500px;
-  display: none;
 }
 
 .delete-first {
@@ -238,7 +237,6 @@ a, a:visited {
   width: 700px;
   margin: 0 auto;
   margin-bottom: 400px;
-  display: none;
 }
 
 .rotate_buttons-list {
@@ -505,7 +503,6 @@ a, a:visited {
   margin: 0 auto;
   padding-top: 50px;
   text-shadow: none;
-  display: none;
 }
 
 .slides_item {
@@ -774,7 +771,6 @@ a, a:visited {
 .svg_clock {
   width: 500px;
   margin: 0 auto;
-  display: none;
 }
 
 .svg_clock-item {
