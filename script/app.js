@@ -48,18 +48,27 @@ fourthRotationBtn.addEventListener('click', ()=> {
 
 /////////////// Progress bar ////////////
 
-// const porgressPrecent = document.querySelector('#porgress_precent');
-// const progressBar = document.querySelector('.svg_circle-item__bar');
+const porgressPrecent = document.querySelector('#percent');
+const progressBar = document.querySelector('#bar');
+const cont = document.querySelector('#cont');
+
+const checkAndchangeRange = () => {
+    let value = porgressPrecent.value;
+    if (isNaN(value)) {
+        value = 100;
+    } else {
+        let r = progressBar.getAttribute('r')
+        let c = Math.PI * (r * 2);
+        if (value < 0)  val = 0;
+        if (value > 100)  val = 100;
+
+        let pct = ((100-value)/100)*c;
+        progressBar.style.strokeDashoffset = pct;
+        cont.setAttribute('data-pct', value)
+    }
+}
 
 
-
-// porgressPrecent.addEventListener('input', () => {
-
-// })
-
-// const numToSquare = num => {
-//     num = String(num);
-//     return num.split('').map(item => item *= item).join('');
-// }
-
-// console.log(numToSquare(9119));
+porgressPrecent.addEventListener('change', () => {
+    checkAndchangeRange();
+})

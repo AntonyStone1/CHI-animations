@@ -769,54 +769,91 @@ a, a:visited {
 }
 
 .svg_clock {
+  margin: 0 auto;
+  padding-left: 90px;
+}
+
+.range {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 500px;
   margin: 0 auto;
 }
 
-.svg_clock-item {
-  width: 500px;
-  height: 500px;
+.range label, .range input {
+  width: auto;
+  margin: 0 auto;
+  color: white;
 }
 
-.svg_clock-item__minutes {
-  -webkit-animation: minutes_animation 6000ms linear infinite;
-          animation: minutes_animation 6000ms linear infinite;
-  -webkit-transform-origin: 42% 42%;
-          transform-origin: 42% 42%;
+#svg circle {
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset 1s linear;
+  stroke: #666;
+  stroke-width: 1em;
 }
 
-.svg_clock-item__hours {
-  -webkit-animation: hours_animation 72000ms linear infinite;
-          animation: hours_animation 72000ms linear infinite;
-  -webkit-transform-origin: 42% 42%;
-          transform-origin: 42% 42%;
+#svg #bar {
+  stroke: #FF9F1E;
 }
 
-@-webkit-keyframes minutes_animation {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+#cont {
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin: 2em auto;
+  color: white;
+  -webkit-box-shadow: 0 0 1em black;
+          box-shadow: 0 0 1em black;
+  border-radius: 100%;
+  position: relative;
+  text-align: center;
 }
 
-@keyframes minutes_animation {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+#cont:after {
+  position: absolute;
+  display: block;
+  height: 160px;
+  width: 160px;
+  left: 50%;
+  top: 50%;
+  -webkit-box-shadow: inset 0 0 1em black;
+          box-shadow: inset 0 0 1em black;
+  content: attr(data-pct) "%";
+  margin-top: -80px;
+  margin-left: -80px;
+  border-radius: 100%;
+  line-height: 160px;
+  font-size: 2em;
+  text-shadow: 0 0 0.5em black;
 }
 
-@-webkit-keyframes hours_animation {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+input {
+  color: #000;
 }
 
-@keyframes hours_animation {
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+/* Make things perty */
+input {
+  border: 1px solid #666;
+  background: #333;
+  color: #fff;
+  padding: 0.5em;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none !important;
+  margin: 1em  auto;
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
