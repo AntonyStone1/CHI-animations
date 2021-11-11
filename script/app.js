@@ -59,8 +59,8 @@ const checkAndchangeRange = () => {
     } else {
         let r = progressBar.getAttribute('r')
         let c = Math.PI * (r * 2);
-        if (value < 0)  val = 0;
-        if (value > 100)  val = 100;
+        if (value < 0)  value = 0;
+        if (value > 100)  value = 100;
 
         let pct = ((100-value)/100)*c;
         progressBar.style.strokeDashoffset = pct;
@@ -72,3 +72,5 @@ const checkAndchangeRange = () => {
 porgressPrecent.addEventListener('change', () => {
     checkAndchangeRange();
 })
+
+
