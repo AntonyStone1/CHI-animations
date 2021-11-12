@@ -74,3 +74,109 @@ porgressPrecent.addEventListener('change', () => {
 })
 
 
+/////////// Array methods //////////////
+
+
+
+let array = [1,2,3,4,5,4,-7,-12,-45,3,2,3,4,5,9,8,10,5,5,5]
+// console.log(array.map((item) => item === 3));;
+
+Array.prototype.customMap = function(callback, thisArgs) {
+    if (this == null) {
+        throw new Error("Cant iterate over undefined or null");
+    }
+
+    let O = Object(this);    
+
+    if (typeof callback !== "function") {
+      throw new Error("Callback is not a function");
+    }
+
+    const result = [];
+    for (let i = 0; i < O.length; i++) {
+        if (i in O) {
+            result[i] = callback.call(thisArgs, this[i], i, this)
+        }
+    }  
+    return result;
+}
+// array.customMap((item, index, arr) => console.log(item, index, arr));
+
+Array.prototype.customForEach = function(callback, thisArgs) {
+    if (this == null) {
+        throw new Error("Cant iterate over undefined or null");
+    }
+    let O = Object(this);
+
+    if (typeof callback !== "function") {
+      throw new Error("Callback is not a function");
+    }
+
+    for (let i = 0; i < O.length; i++) {
+        if (i in O) {
+            result[i] = callback.call(thisArgs, this[i], i, this)
+        }
+    }
+}
+
+// console.log(array.forEach(item => console.log(item)));
+// console.log(array.customForEach(item => console.log(item)));
+
+
+
+function isPrime(num) {
+    if (num <= 1) return false;
+    else if (num === 2) return true;
+    else {
+      for (let i = 2; i < num; i++) if (num % i === 0) return false;
+      return true;
+    }
+  }
+Array.prototype.customFilter = function(callback, thisArgs) {
+    if (this == null) {
+        throw new Error("Cant iterate over undefined or null");
+    }
+    let O = Object(this);
+
+    if (typeof callback !== "function") {
+      throw new Error("Callback is not a function");
+    }
+
+    const result = [];
+    for (let i = 0; i < O.length; i++) {
+        if (i in O) {
+            if (callback.call(thisArgs, this[i], i, this)) {
+                result.push(this[i])
+            }
+        } 
+    }
+    return result;
+}
+
+// console.log(array.filter(isPrime));
+// console.log(array.customFilter(isPrime));
+
+
+Array.prototype.customReduce = function(callback, initialValue) {
+    if (!initialValue && this.length === 0) {
+        throw new Error("Array is empty");
+    } else if (initialValue && this.length === 0) {
+        return initialValue;
+    }
+    let obj = Object(this);
+    let acc = initialValue ? initialValue : undefined;
+    for (let i = 0; i < this.length; i++) {
+        if (i in obj) {
+            if (acc !== undefined) {
+                acc = callback(acc, this[i], i, this)
+            } else {
+                acc = this[i];
+            }
+        }
+        
+       
+    }   
+    return acc;
+}
+
+console.log([1,2,,,,,4].customReduce((acum, item) => acum += item));
