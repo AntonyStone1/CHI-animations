@@ -293,17 +293,6 @@ Array.prototype.customSort = function(callback) {
                 }
             }
         }
-    } else {
-        for (let i = 1; i < this.length; i++) {
-            const current = this[i];
-            let j = i;
-            while (j > 0 && this[j - 1] > current) {
-                this[j] = this[j - 1];
-                j--;
-            }
-            this[j] = current;
-        }
-        
     }    
 
 
@@ -363,5 +352,5 @@ Array.prototype.customSort = function(callback) {
 
 let arrToSort = [1,2,3,6,37,4,5,3,3];
 let strArr = ['asfsdf', 'dffd', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe']
-console.log(strArr.sort());
-console.log(strArr.customSort());
+console.log(strArr.sort((a,b) => a - b));
+console.log(strArr.customSort((a,b) => a - b));
