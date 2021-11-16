@@ -178,14 +178,13 @@ Array.prototype.customReduce = function(callback, initialValue) {
                 acc = this[i];
             }
         }
-        
        
     }   
     return acc;
 }
 
-// console.log([1,2,,,,,4].reduce((acum, item) => acum += item));
-// console.log([1,2,,,,,4].customReduce((acum, item) => acum += item));
+// console.log([1,2,,,,,4].reduce((acum, item) => item ? acum.concat([item]) : accum, []));
+// console.log([1,2,,,,,4].customReduce((acum, item) => item ? acum.concat([item]) : accum, []));
 
 const randomNum = (num) => 2 + num;
 
@@ -280,89 +279,89 @@ Array.prototype.customPush = function(value) {
 
 
 
-Array.prototype.customSort = function() {
-    return quickSort;
-    function quickSort(arr) {
-        if (arr.length === 1) {
-            console.log(arr);
-            return arr;            
-        } else {
-            let q = arr[Math.round(arr.length / 2)]
-            let left = [];
-            let center = [];
-            let right = [];
-
-            for (let i = 0; i < array.length; i++) {
-                let item = array[i];
-                if(item > q)
-    			{
-    				right.push(item);
-    			}
-    			else if (item < q)
-    			{
-    				left.push(item);
-    			}
-    			else
-    			{
-    				center.push(item);
-    			}
+Array.prototype.customSort = function(callback) {
+    if (typeof callback !== 'function' && callback !== undefined) {
+        throw new TypeError(callback + ' is not a function');
+    }
+    if (callback) {
+        for (let i = 0; i < this.length - 1; i++) {
+            for (let j = 0; j < this.length - 1; j++) {
+                if (callback(this[j], this[j + 1]) > 0) {
+                    let temp = this[j];
+                    this[j] = this[j + 1];
+                    this[j + 1] = temp;
+                }
             }
-            return quickSort(left).concat(center).concat(quickSort(right));
         }
+    } else {
+        for (let i = 1; i < this.length; i++) {
+            const current = this[i];
+            let j = i;
+            while (j > 0 && this[j - 1] > current) {
+                this[j] = this[j - 1];
+                j--;
+            }
+            this[j] = current;
+        }
+        
     }    
+
+
+    if (!callback) {
+        if (this.length < 10) {
+            return isort(this);
+            function isort(arr) {
+                let n = arr.length;
+                for (let i = 1; i < n; i++) {
+                    let current = String(arr[i]);
+                    let j = i-1; 
+                    while ((j > -1) && (current < String(arr[j]))) {
+                        arr[j+1] = arr[j];
+                        j--;
+                    }
+                    arr[j+1] = (typeof arr[i] === 'string') ? current: +current;
+                }
+            return arr;
+            }
+        }
+        
+        return qsort(this);
+        function qsort(arr) {
+            if (arr.length < 2) {
+                return arr;
+            } else {
+                const pivot = String(arr[Math.floor(arr.length / 2)]);
+                const less = [];
+                const greater = [];
+                const center = [];
+                
+                for (let i = 0; i < array.length; i++) {
+                    if (arr[i] == undefined) continue;
+                    arr[i] = String(arr[i]);
+                    if (arr[i] < pivot) {
+                        less[less.length] = (typeof arr[i] === 'string') ? arr[i]: +arr[i];
+                    }
+                    if (arr[i] > pivot) {
+                        greater[greater.length] = (typeof arr[i] === 'string') ? arr[i]: +arr[i];
+                    }
+                    if (arr[i] === pivot) {
+                        center.push((typeof arr[i] === 'string') ? arr[i]: +arr[i])
+                    }
+                    
+                }
+                return [...qsort(less), ...center, ...qsort(greater)]
+            }
+        }
+    }
+    return this;
 }
-
-let arrToSort = [1, 30, 39, 29, 10, 40];
-console.log(arrToSort.customSort());
+    
 
 
 
-// Array.prototype.sort1 = function(compareFn) {
-//     return mergeSort(this)
-//     // Split the array into halves and merge them recursively 
-//     function mergeSort(arr) {
-//         if (arr.length === 1) {
-//             // return once we hit an array with a single item
-//             return arr
-//         }
-//         const middle = Math.floor(arr.length / 2) // get the middle item of the array rounded down
-//         const left = arr.slice(0, middle) // items on the left side
-//         const right = arr.slice(middle) // items on the right side
-//         return merge(
-//             mergeSort(left),
-//             mergeSort(right)
-//         )
-//     }
-//     // compare the arrays item by item and return the concatenated result
-//     function merge(left, right) {
-//         let result = []
-//         let indexLeft = 0
-//         let indexRight = 0
-//         while (indexLeft < left.length && indexRight < right.length) {
-//             //compareFn ? compareFn =()=> left[indexLeft] < right[indexRight] : compareFn
-//             let _left = left[indexLeft]
-//             let _right = right[indexRight]
-//             if (compareFn)
-//                 compareFn = composeCompareFn(compareFn(left, right))
-//             compareFn = (l, r) => l < r
-//             if (compareFn(_left, _right)) {
-//                 result.push(left[indexLeft])
-//                 indexLeft++
-//             } else {
-//                 result.push(right[indexRight])
-//                 indexRight++
-//             }
-//         }
-//         return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
-//     }
-//     function composeCompareFn(compareResult) {
-//         if (Math.sign(compareResult) == -1)
-//             return false
-//         if (Math.sign(compareResult) == 1)
-//             return true
-//         if (compareResult == 0)
-//             return false
-//     }
-// }
 
-// console.log(arrToSort.sort1());
+
+let arrToSort = [1,2,3,6,37,4,5,3,3];
+let strArr = ['asfsdf', 'dffd', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe']
+console.log(strArr.sort());
+console.log(strArr.customSort());
