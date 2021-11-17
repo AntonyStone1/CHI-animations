@@ -203,7 +203,7 @@ Array.prototype.customAt = function(value) {
 
 
 
-Array.prototype.customConcat = function(thisArgs) {    
+Array.prototype.customConcat = function() {    
     const result = this;
     for (let j = 0; j < arguments.length; j++) {
         if (arguments[j].length !== undefined) { 
@@ -350,7 +350,83 @@ Array.prototype.customSort = function(callback) {
 
 
 
-let arrToSort = [1,2,3,6,37,4,5,3,3];
-let strArr = ['asfsdf', 'dffd', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe']
-console.log(strArr.sort((a,b) => a - b));
-console.log(strArr.customSort((a,b) => a - b));
+// let arrToSort = [1,2,3,6,37,4,5,3,3];
+// let strArr = ['asfsdf', 'dffd', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe', 'frgthv', 'defefe', 'asfsdf', 'dffd', 'frgthv', 'defefe']
+// console.log('streeeArr'.split('').filter(item => item === 'e').length);
+// console.log(strArr.sort((a,b) => a.split('').filter(item => item === 'e').length - b.split('').filter(item => item === 'e').length ));
+// console.log(strArr.customSort((a,b) => a.split('').filter(item => item === 'e').length - b.split('').filter(item => item === 'e').length ));
+
+
+
+function longestConsec(strarr, k) {
+    if (k > strarr.length || k <= 0) {
+        return '';
+    } else {
+        let result = [];
+        let res = [];
+        let arr =  [];
+        arr = arr.concat(strarr);
+        let sortedArr = arr.sort((a, b) => b.length - a.length);
+        sortedArr.forEach((item, index) => {
+            if (index + 1 <= k) {
+                result.push(item)
+            }
+        })
+        strarr.forEach(item => {
+            for (let i = 0; i < strarr.length; i++) {
+                if (item === result[i]) {
+                    res.push(item)
+                }
+                
+            }
+        })
+        return res.join('');
+    }   
+    
+}
+
+// // console.log(longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2));
+
+// console.log(longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2))
+// console.log(longestConsec(["ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"], 1))
+// console.log(longestConsec([], 3))
+// console.log(longestConsec(["itvayloxrp","wkppqsztdkmvcuwvereiupccauycnjutlv","vweqilsfytihvrzlaodfixoyxvyuyvgpck"], 2))
+// console.log(longestConsec(["wlwsasphmxx","owiaxujylentrklctozmymu","wpgozvxxiu"], 2))
+// console.log(longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 3))
+// console.log(longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 15))
+// console.log(longestConsec(["it","wkppv","ixoyx", "3452", "zzzzzzzzzzzz"], 0))
+
+Array.customFrom = function(array, callback, thisArg) {
+    if (array === undefined) {
+        return;
+    }
+    const newArray = new Array();
+    let i = 0;
+    if (array[Symbol.iterator]) {
+        for (let value of array) {
+            if (callback) {
+                newArray.push(callback.call(thisArg, value, i, array));
+            } else {
+                newArray.push(value);
+            }
+            i++;
+        }
+    }
+    return newArray;
+};
+
+
+
+let mapArr = new Map();
+mapArr.set(1,'a')
+mapArr.set(2,'b')
+mapArr.set(3,'c')
+
+console.log(Array.customFrom('defef'));
+console.log(Array.from('defef'));
+console.log(Array.customFrom(mapArr));
+console.log(Array.from(mapArr));
+console.log(Array.customFrom([1, 2, 3], x => x + x));
+console.log(Array.from([1, 2, 3], x => x + x));
+console.log(Array.customFrom(123));
+console.log(Array.from(123));
